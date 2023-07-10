@@ -33,24 +33,27 @@ Widget defaultFormField({
       decoration: InputDecoration(
         labelText: label,
         labelStyle: TextStyle(
-          color: Colors.green,
+          color: Colors.teal,
         ),
         prefixIcon: Icon(
           prefix,
+          color: Colors.teal,
         ),
-        prefixIconColor: Colors.red,
+        prefixIconColor: Colors.teal,
         suffixIcon: suffix != null ? IconButton(
           onPressed: ()
           {
             suffixPressed!();
+
           },
           icon: Icon(
             suffix,
+            color: Colors.teal,
           ),
         ) : null,
         hintText: hintText ,
         hintStyle: TextStyle(
-          color: Colors.grey.shade400,
+          color: Colors.teal,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -62,7 +65,7 @@ Widget defaultFormField({
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.0),
-          borderSide: BorderSide(color: Colors.green),
+          borderSide: BorderSide(color: Colors.teal),
         ),
         constraints: BoxConstraints(
           minHeight: 1.0,

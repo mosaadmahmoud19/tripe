@@ -83,7 +83,7 @@ class CheckCodeScreen extends StatelessWidget {
                         builder: (context) => defaultTextButton(
                             textName: 'Next',
                             primaryColor: Colors.white,
-                            backgroundColor: Colors.green.shade300,
+                            backgroundColor: Colors.teal,
                             function: ()
                             {
                               if(formKey.currentState!.validate())

@@ -5,6 +5,9 @@ class LoginModel
    String? message;
    Data? data;
 
+   LoginModel({this.result, this.message, this.data});
+
+
    LoginModel.fromJson(Map<String,dynamic> json)
    {
      result = json['result'] ;
@@ -13,18 +16,8 @@ class LoginModel
    }
 }
 
+
 class Data
-{
-  UserData? user;
-  Data.fromJson(Map<String, dynamic> json)
-  {
-    user =  json['user'] != null ? UserData.fromJson(json['user']) : null ;
-  }
-
-}
-
-
-class UserData
 {
   int? id;
   String? fullName;
@@ -33,13 +26,19 @@ class UserData
   String? image;
   String? token;
 
-  UserData.fromJson(Map<String, dynamic> json)
+  Data({this.id, this.phone ,this.fullName, this.token,
+    this.image, this.isActive,
+  });
+
+
+  Data.fromJson(Map<String, dynamic> json)
   {
     id = json['id'];
     fullName = json['fullname'];
-    phone = json['phone'];
+    phone = json['phone'].toString();
     isActive = json['is_active'];
     image = json['image'];
     token = json['token'];
   }
 }
+

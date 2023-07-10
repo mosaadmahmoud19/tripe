@@ -67,9 +67,7 @@ class SendCodeYourPhoneScreen extends StatelessWidget {
                             }
                           }
                       ),
-                      SizedBox(
-                        height: 30.0,
-                      ),
+
 
                       const SizedBox(
                         height: 25.0,
@@ -79,7 +77,7 @@ class SendCodeYourPhoneScreen extends StatelessWidget {
                         builder: (context) => defaultTextButton(
                             textName: 'Next',
                             primaryColor: Colors.white,
-                            backgroundColor: Colors.green.shade300,
+                            backgroundColor: Colors.teal,
                             function: ()
                             {
                               if(formKey.currentState!.validate())

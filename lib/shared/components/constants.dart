@@ -4,13 +4,17 @@ import 'package:trip_app/models/register_model.dart';
 
 String? token = '';
 
+int? idPlan ;
+
+int? idTopRatedPlaces ;
+
 String? deviceToken = '';
 
 String? phone = '';
 
-late RegisterModel registerModel;
+RegisterModel registerModel = RegisterModel();
 
-late LoginModel loginModel;
+ LoginModel loginModel = LoginModel();
 
 
 

@@ -36,7 +36,7 @@ required String password,
 
  DioHelper.postData(
 url: UserLOGIN,
-token: token,
+
 data:
 {
   'phone' :phone,
@@ -48,8 +48,14 @@ data:
 {
 
   loginModel = LoginModel.fromJson(value.data);
-  print(loginModel);
-  emit(TripeLoginSuccessState(loginModel));
+  if (value.data != null) {
+    LoginModel loginModel = LoginModel.fromJson(value.data);
+    print(loginModel.data?.fullName);
+    emit(TripeLoginSuccessState(loginModel));
+  } else {
+    print('Response data is null');
+    emit(TripeLoginErrorState('Response data is null'));
+  }
 }).catchError((error)
 {
 print(error.toString());

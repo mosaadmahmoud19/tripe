@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trip_app/layout/cubit/triper_screen_latout.dart';
 import 'package:trip_app/module/forgot%20_password/send_code_to_your_phone.dart';
 import 'package:trip_app/module/login/cubit.dart';
 import 'package:trip_app/module/login/state.dart';
@@ -18,7 +19,7 @@ class LoginScreen extends StatelessWidget {
    @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => TripeLoginCubit(),
+      create: (BuildContext context)=>TripeLoginCubit(),
       child: BlocConsumer<TripeLoginCubit,TripeLoginStates>(
         listener: (context ,state)
         {
@@ -26,11 +27,13 @@ class LoginScreen extends StatelessWidget {
           {
             if(state.loginModel.result == "success")
             {
-              print(state.loginModel.message);
+              String? name = state.loginModel.data?.fullName;
+              print(name);
               showToast(
                 text: state.loginModel.message,
                 state: ToastStates.SUCCESS,
               );
+              navigateAndFinish(context, HomeScreen());
 
             }
             else
@@ -86,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                     children:
                     [
                       Image(
-                        image: AssetImage('assets/images/triper.jpeg'),
+                        image: AssetImage('assets/images/logo.jpg'),
                         height: 150.0,
                         width: double.infinity,
                         fit: BoxFit.cover,
@@ -105,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                           controller: phoneController,
                           type: TextInputType.phone,
                           label: " Enter phone ",
-                          prefix: Icons.email,
+                          prefix: Icons.phone,
                           validate: (String? value)
                           {
                             if(value!.isEmpty)
@@ -163,6 +166,9 @@ class LoginScreen extends StatelessWidget {
                           } ,
                           child: Text(
                             'Forgot password',
+                            style: TextStyle(
+                              color: Colors.teal,
+                            ),
 
                           ),
                         ),
@@ -175,9 +181,9 @@ class LoginScreen extends StatelessWidget {
                       ConditionalBuilder(
                           condition: state is! TripeLoginLoadingState,
                           builder: (context) => defaultTextButton(
-                              textName: 'continue',
+                              textName: 'Login',
                               primaryColor: Colors.white,
-                              backgroundColor: Colors.green.shade300,
+                              backgroundColor: Colors.teal,
                               function: ()
                               {
                                 if(formKey.currentState!.validate())
@@ -207,6 +213,7 @@ class LoginScreen extends StatelessWidget {
                             child: Text(
                               'Sign up',
                               style: TextStyle(
+                                color: Colors.teal,
 
                               ),
                             ),
@@ -257,7 +264,7 @@ class LoginScreen extends StatelessWidget {
                           image: 'assets/images/google.png',
                           function: ()
                           {
-                            TripeLoginCubit.get(context).signInWithGoogle();
+                            // TripeLoginCubit.get(context).signInWithGoogle();
                           }
                       ),
 
@@ -283,7 +290,6 @@ class LoginScreen extends StatelessWidget {
           );
         },
       ),
-
     );
   }
 }

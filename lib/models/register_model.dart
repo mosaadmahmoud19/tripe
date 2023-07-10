@@ -6,6 +6,9 @@ class RegisterModel
   String? message;
   Data? data;
 
+  RegisterModel({this.result, this.message, this.data});
+
+
   RegisterModel.fromJson(Map<String ,dynamic> json)
   {
     result = json['result'];
@@ -19,26 +22,22 @@ class RegisterModel
 
 class Data
 {
-  UserData? user;
-  Data.fromJson(Map<String ,dynamic> json)
-  {
 
-    user = json['user'] != null ?  UserData.fromJson(json['user']) : null;
-
-  }
-}
-
-class UserData
-{
   int? user_id;
   int? otp;
   String? phone;
 
-  UserData.fromJson(Map<String ,dynamic> json)
+  Data({ this.user_id ,this.otp ,this.phone});
+
+
+  Data.fromJson(Map<String ,dynamic> json)
   {
     user_id = json['user_id'];
     otp = json['otp'];
-    phone = json['phone'] ;
+    phone = json['phone'];
 
   }
 }
+
+
+

@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trip_app/models/get_all_nationality_model.dart';
 import 'package:trip_app/module/confirmation_code/confirmation_code_screen.dart';
 import 'package:trip_app/module/register/cubit.dart';
 import 'package:trip_app/module/register/state.dart';
@@ -25,7 +26,7 @@ class RegisterScreen extends StatelessWidget {
    @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => TripeRegisterCubit(),
+      create: (BuildContext context) => TripeRegisterCubit()..getAllNationality(),
       child: BlocConsumer<TripeRegisterCubit,TripeRegisterStates>(
         listener: (context ,state)
         {
@@ -35,10 +36,12 @@ class RegisterScreen extends StatelessWidget {
             {
               CacheHelper.saveData(
                 key: 'phone',
-                value: state.registerModel.data?.user?.phone,
+                value: state.registerModel.data?.phone.toString(),
               ).then((value)
               {
-                phone = state.registerModel.data?.user?.phone;
+                print(state.registerModel.data?.user_id);
+
+                phone = state.registerModel.data?.phone.toString();
                 navigateAndFinish(context, ConfirmationCodeScreen());
 
               });
@@ -76,7 +79,7 @@ class RegisterScreen extends StatelessWidget {
                     children:
                     [
                       Image(
-                        image: AssetImage('assets/images/triper.jpeg'),
+                        image: AssetImage('assets/images/logo.jpg'),
                         height: 150.0,
                         width: double.infinity,
                         fit: BoxFit.cover,
@@ -129,31 +132,10 @@ class RegisterScreen extends StatelessWidget {
                             }
                           }
                       ),
-                      SizedBox(
-                        height: 30.0,
-                      ),
-                      const Text(
-                        "nationality ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 14.0,
-                      ),
-                      defaultFormField(
-                          controller: nationalityController,
-                          type: TextInputType.phone,
-                          label: " Enter your nationality ",
-                          prefix: Icons.person_add,
-                          validate: (String? value)
-                          {
-                            if(value!.isEmpty)
-                            {
-                              return 'please enter your nationality';
-                            }
-                          }
-                      ),
+
+
+
+
                       SizedBox(
                         height: 30.0,
                       ),
@@ -230,6 +212,51 @@ class RegisterScreen extends StatelessWidget {
                           return null;
                         },
                       ),
+                         SizedBox(height: 30.0,),
+                      ///////
+                      Row(
+                        children: [
+                          const Text(
+                            "Choose Your Nationality ",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsetsDirectional.only(start: 50.0),
+
+                              child: DropdownButton<String>(
+
+                                value: TripeRegisterCubit.get(context).selectedNationalityId,
+                                items: TripeRegisterCubit.get(context).nationalityList?.map((DataNationality nationality) {
+                                  return DropdownMenuItem<String>(
+                                    value: nationality.id.toString(),
+                                    child: Text(
+                                      nationality.name!,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.teal,
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                                onChanged: (String? item) {
+                                  TripeRegisterCubit.get(context).changeItems(item!);
+                                  print('id from change is :${TripeRegisterCubit.get(context).selectedNationalityId}');
+                                },
+                                iconEnabledColor: Colors.teal,
+                                  style: TextStyle(
+                                    color: Colors.teal,
+                                  ),
+
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+
 
                       const SizedBox(
                         height: 25.0,
@@ -237,17 +264,17 @@ class RegisterScreen extends StatelessWidget {
                       ConditionalBuilder(
                           condition: state is! TripeRegisterLoadingState,
                           builder: (context) => defaultTextButton(
-                              textName: 'continue',
+                              textName: 'sign up',
                               primaryColor: Colors.white,
-                              backgroundColor: Colors.green.shade300,
+                              backgroundColor: Colors.teal,
                               function: ()
                               {
                                 if(formKey.currentState!.validate())
                                 {
                                   TripeRegisterCubit.get(context).userRegister(
                                      name: nameController.text,
-                                    phone: phoneController.text,
-                                    nationality: nationalityController.text,
+                                    phones: phoneController.text,
+
                                     password: passwordController.text,
                                     confirmPassword: confirmPasswordController.text,
                                   );
@@ -268,7 +295,7 @@ class RegisterScreen extends StatelessWidget {
                           image: 'assets/images/google.png',
                           function: ()
                           {
-                            TripeRegisterCubit.get(context).signInWithGoogle();
+                            TripeRegisterCubit.get(context).signInWithGoogleRegister();
                           }
                       ),
 

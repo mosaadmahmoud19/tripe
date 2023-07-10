@@ -5,6 +5,9 @@ class ConfirmationCodeModel
   String? message;
   ConfirmCodeData? data;
 
+  ConfirmationCodeModel({this.result, this.message, this.data});
+
+
   ConfirmationCodeModel.fromJson(Map<String,dynamic> json)
   {
     result = json['result'] as String?;
@@ -13,25 +16,18 @@ class ConfirmationCodeModel
   }
 }
 
+
 class ConfirmCodeData
-{
-  UserConfirmCodeData? user;
-  ConfirmCodeData.fromJson(Map<String, dynamic> json)
-  {
-    user =  json['user'] != null ? UserConfirmCodeData.fromJson(json['user']) : null ;
-  }
-
-}
-
-
-class UserConfirmCodeData
 {
   int? userId;
   String? userName;
   String? token;
 
+  ConfirmCodeData({this.userId, this.userName ,this.token});
 
-  UserConfirmCodeData.fromJson(Map<String, dynamic> json)
+
+
+  ConfirmCodeData.fromJson(Map<String, dynamic> json)
   {
     userId = json['user_id'];
     userName = json['user_name'];

@@ -1,9 +1,11 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trip_app/layout/cubit/triper_screen_latout.dart';
 import 'package:trip_app/models/register_model.dart';
 import 'package:trip_app/module/confirmation_code/cubit/cubit.dart';
 import 'package:trip_app/module/confirmation_code/cubit/states.dart';
+import 'package:trip_app/module/interest.dart';
 import 'package:trip_app/module/login/login_screen.dart';
 import 'package:trip_app/shared/components/components.dart';
 import 'package:trip_app/shared/components/constants.dart';
@@ -30,11 +32,11 @@ class ConfirmationCodeScreen extends StatelessWidget {
             {
               CacheHelper.saveData(
                 key: 'token',
-                value: state.confirmationCodeModel.data?.user?.token,
+                value: state.confirmationCodeModel.data?.token,
               ).then((value)
               {
-                token = state.confirmationCodeModel.data?.user?.token;
-                navigateAndFinish(context, LoginScreen());
+                token = state.confirmationCodeModel.data?.token;
+                navigateAndFinish(context, InterestsScreen());
 
               });
 
@@ -70,9 +72,6 @@ class ConfirmationCodeScreen extends StatelessWidget {
                     [
 
 
-
-
-
                       SizedBox(
                         height: 30.0,
                       ),
@@ -103,7 +102,7 @@ class ConfirmationCodeScreen extends StatelessWidget {
                         builder: (context) => defaultTextButton(
                             textName: 'Send',
                             primaryColor: Colors.white,
-                            backgroundColor: Colors.green.shade300,
+                            backgroundColor: Colors.teal,
                             function: ()
                             {
                               if(formKey.currentState!.validate())

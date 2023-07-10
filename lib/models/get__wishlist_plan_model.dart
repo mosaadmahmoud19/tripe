@@ -21,10 +21,11 @@ class Data {
   Data({this.plans,});
 
   Data.fromJson(Map<String, dynamic> json) {
-    json['plans'].forEach((element) {
-      plans?.add(GetWishlistPlan.fromJson(element));
-    });
-
+    if (json['plans'] != null) {
+      plans = List<GetWishlistPlan>.from(json['plans'].map((x) => GetWishlistPlan.fromJson(x)));
+    } else {
+      plans = [];
+    }
   }
 }
 
@@ -33,23 +34,27 @@ class GetWishlistPlan {
   String? title;
   String? description;
   String? images;
+  bool? favourite;
+  int? rating;
+  int? reviewsCount;
 
 
   GetWishlistPlan(
-      {
-        this.id,
+      {this.id,
         this.title,
         this.description,
         this.images,
-
-
-
-        });
+        this.favourite,
+        this.rating,
+        this.reviewsCount});
 
   GetWishlistPlan.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     description = json['description'];
     images = json['images'];
+    favourite = json['favourite'];
+    rating = json['rating'];
+    reviewsCount = json['reviews_count'];
   }
 }

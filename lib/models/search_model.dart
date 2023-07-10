@@ -38,7 +38,7 @@ class SearchPlaces {
   double? distance;
   double? rating;
   int? reviews_count;
-  int? favourite;
+  bool? favourite;
 
   SearchPlaces(
       {this.id,

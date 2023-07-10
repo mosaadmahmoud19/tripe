@@ -9,12 +9,14 @@ const SOCIALLOGIN = 'socialLogin';
 
 const SENDCODE = 'sendCode';
 
-const CHECKCODE = 'checkCode';
+const CHECKCODE = 'confirmCode';
 
 const RESETPASSWORD = 'resetPassword';
 
 const HOME = 'home';
 
-const PLACE = 'filter-places?page=1';
+const FILTERPLACES = 'filter-places?page=1';
 
 const GETWISHLISTPLAN = 'get-wishlist/plan';
+
+const GETWISHLISTPLACES = 'get-wishlist/place';

@@ -65,7 +65,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 30.0,
+                        height: 15.0,
                       ),
                       defaultFormField(
                         onSubmit: (value)
@@ -103,7 +103,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 14.0,
+                        height: 15.0,
                       ),
 
                       defaultFormField(
@@ -133,14 +133,14 @@ class ResetPasswordScreen extends StatelessWidget {
                       ),
 
                       const SizedBox(
-                        height: 25.0,
+                        height: 40.0,
                       ),
                       ConditionalBuilder(
                         condition: state is! TripeLoginLoadingState,
                         builder: (context) => defaultTextButton(
                             textName: 'Reset password',
                             primaryColor: Colors.white,
-                            backgroundColor: Colors.green.shade300,
+                            backgroundColor: Colors.teal,
                             function: ()
                             {
                               TripeLoginCubit.get(context).resetPassword(

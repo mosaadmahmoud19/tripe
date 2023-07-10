@@ -7,11 +7,14 @@ class DioHelper {
   {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'http://192.168.1.21:8000/api/',
+        baseUrl: 'http://192.168.43.123:8000/api/',
         receiveDataWhenStatusError: true,
         followRedirects: true,
         maxRedirects: 5,
-        receiveTimeout: const Duration(milliseconds: 30000),
+        connectTimeout:  const Duration(milliseconds: 800000),
+
+        receiveTimeout: const Duration(milliseconds: 100000),
+
       ),
     );
   }
@@ -21,12 +24,43 @@ class DioHelper {
     Map<String, dynamic>? query,
     String lang = 'en',
     String? token,
+    var lat,
+    var lngg,
+
+
   }) async
   {
     dio.options.headers =
     {
       'Content-Type': 'application/json',
-      'Authorization':  token,
+      'Authorization': "Bearer $token",
+    };
+
+    return await dio.get(
+      url,
+      queryParameters: query,
+    );
+  }
+
+
+  static Future<Response> getDataLatLng({
+    required String url,
+    Map<String, dynamic>? query,
+    String lang = 'en',
+    String? token,
+    var lat,
+    var lngg,
+
+
+  }) async
+  {
+    dio.options.headers =
+    {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+      'lat': "$lat",
+      'lng': "$lngg",
+
     };
 
     return await dio.get(
@@ -46,7 +80,9 @@ class DioHelper {
     dio.options.headers =
     {
       'Content-Type': 'application/json',
-      'Authorization':  token,
+      'Authorization': "Bearer $token",
+
+
 
     };
 
@@ -54,6 +90,39 @@ class DioHelper {
       url,
       queryParameters: query,
       data: data,
+
+
+    );
+  }
+
+
+
+
+  static Future<Response> postRecommendation({
+    required String url,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? query,
+    String lang = 'en',
+    String? token,
+  }) async
+  {
+    dio.options.headers =
+    {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+      'Content-Disposition': 'attachment; filename="users.csv"',
+      'Accept':'application/json',
+
+
+
+    };
+
+    return await dio.post(
+      url,
+      queryParameters: query,
+      data: data,
+
+
     );
   }
 

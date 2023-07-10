@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trip_app/models/confirmation_code_model.dart';
+import 'package:trip_app/models/register_model.dart';
 import 'dart:io' show Platform;
 
 import 'package:trip_app/module/confirmation_code/cubit/states.dart';
@@ -16,8 +17,7 @@ class ConfirmationCodeCubit extends Cubit<ConfirmationCodeStates>
   static ConfirmationCodeCubit get(context) => BlocProvider.of(context);
 
 
-  late ConfirmationCodeModel confirmationCodeModel;
-
+  late ConfirmationCodeModel confirmationCodeModel = ConfirmationCodeModel();
 
  String platform = Platform.isAndroid ? 'android' :'ios' ;
   void sendConfirmationCode({
@@ -35,7 +35,7 @@ class ConfirmationCodeCubit extends Cubit<ConfirmationCodeStates>
       data:
       {
         'verified_code':verifiedCode,
-        'phone':registerModel.data?.user?.phone ,
+        'phone':phone ,
         'device_token':deviceToken,
         'type':platform,
       },
