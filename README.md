@@ -1,33 +1,14 @@
-![wishlist](https://github.com/mosaadmahmoud19/tripe/assets/126625661/332ab659-b0e6-4fa3-a796-e12b79fc707b)
-![tripr](https://github.com/mosaadmahmoud19/tripe/assets/126625661/27b01663-3bd6-4336-9d02-5342aa638da3)
-![tripr ](https://github.com/mosaadmahmoud19/tripe/assets/126625661/03abbf84-2fe5-400c-b515-be376b2624bd)
-![search](https://github.com/mosaadmahmoud19/tripe/assets/126625661/9edfca70-bf2a-455f-8d47-353fdd0f6610)
-![planShowjpg](https://github.com/mosaadmahmoud19/tripe/assets/126625661/da03a521-6cb5-4e85-b456-1797df4bd61f)
-![plan](https://github.com/mosaadmahmoud19/tripe/assets/126625661/37e9968b-98fb-49dd-a043-8589c0e88f7d)
-![onBoardingjpg](https://github.com/mosaadmahmoud19/tripe/assets/126625661/896c3f23-c019-49a4-a194-c468e6fdfca8)
-![onboarding](https://github.com/mosaadmahmoud19/tripe/assets/126625661/6c44edb1-f5b4-4827-8fb3-e97e7696eec0)
-![newTrip](https://github.com/mosaadmahmoud19/tripe/assets/126625661/a91ecd43-6519-47f3-886a-8c07c5da15ad)
-![homejpg](https://github.com/mosaadmahmoud19/tripe/assets/126625661/60ba4a9f-d247-47f1-98fa-b3416437ef71)
-![filterjpg](https://github.com/mosaadmahmoud19/tripe/assets/126625661/157147a3-8071-4544-975e-e688ff7dc752)
-![drawer](https://github.com/mosaadmahmoud19/tripe/assets/126625661/56fb0ef2-f038-4b69-9840-194c39bf3bf5)
-![detailsOfPlanjpg](https://github.com/mosaadmahmoud19/tripe/assets/126625661/ab8cef01-c61d-4d50-819c-ab8fda8ac89e)
-![details](https://github.com/mosaadmahmoud19/tripe/assets/126625661/d5cc6594-e6b0-4125-9489-a5f11847e1d5)
-# trip_app
 
-A new Flutter project.
+# tripr_app
 
-## Getting Started
+Tripr is a groundbreaking mobile application for tourism in Egypt that leverages the power of Artificial Intelligence (AI) to revolutionize the travel experience. Tripr provides intelligent recommendations based on users' preferences, allowing them to explore Egypt's treasures beyond the typical tourist hotspots. The app also offers customized trip planning, allowing users to create their own itineraries and receive personalized recommendations tailored to their aspirations. Tripr unveils hidden gems in Egypt by showcasing lesser-known locations across the country, encouraging travelers to explore its diverse offerings. Developed using cutting-edge technology, the app employs Flutter for the frontend, Laravel and MySQL for the backend infrastructure, and Python and Flask for AI and ML components. This project has not only allowed me to grow as a professional but has also fueled my passion for utilizing technology to enhance everyday experiences.
 
-This project is a starting point for a Flutter application.
+## Screens
+![wishlist](https://github.com/mosaadmahmoud19/tripe/assets/126625661/ea91f2f9-e24c-4ee3-960e-52014b2ad004)
+![search](https://github.com/mosaadmahmoud19/tripe/assets/126625661/f8013421-56a6-4022-8c5d-35a1c52a2bd3)
+![plan](https://github.com/mosaadmahmoud19/tripe/assets/126625661/01c0d0ee-628c-46d4-854f-ac7ce445f2bd)
+![onBoardingjpg](https://github.com/mosaadmahmoud19/tripe/assets/126625661/3aa87272-649b-41bc-8934-7b874e8abafa)
+![onBoarding](https://github.com/mosaadmahmoud19/tripe/assets/126625661/42d71874-453e-4877-b4b7-08230121997f)
+![createplan](https://github.com/mosaadmahmoud19/tripe/assets/126625661/12fdd751-9dcb-4e09-8c2a-fde060b318eb)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
-![tripr](https://github.com/mosaadmahmoud19/tripe/assets/126625661/955df47d-42f5-4d54-aebb-193e9c5d7a15)
+##
